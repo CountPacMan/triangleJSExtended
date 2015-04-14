@@ -1,7 +1,6 @@
 jQuery(document).ready(function() {
   $("#sideA").focus();
   $("#triangle").submit(function(event) {
-    $("#warning").hide();
     var newSideA = parseInt($("#sideA").val());
     var newSideB = parseInt($("#sideB").val());
     var newSideC = parseInt($("#sideC").val());
