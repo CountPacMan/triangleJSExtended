@@ -12,24 +12,43 @@
       <h1>TriangleJS</h1>
       <img src="img/triangle.jpg" alt="all-seeing eye triangle">
       <hr/>
-      <form id="triangle">
-        <div class="form-group">
-          <label for="sideA">Length of side A</label>
-          <input id="sideA" type="number" required>
+      <div class="row" id="message">
+        <h2 id="print-message" class="text-danger"></h2>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h3>New Triangle</h3>
+          <form id="triangle">
+            <div class="form-group">
+              <label for="sideA">Length of side A</label>
+              <input id="sideA" type="number" required>
+            </div>
+            <div class="form-group">
+              <label for="sideB">Length of side A</label>
+              <input id="sideB" type="number" required>
+            </div>
+            <div class="form-group">
+              <label for="sideC">Length of side A</label>
+              <input id="sideC" type="number" required>
+            </div>
+            <button type="submit" class="btn btn-info">Submit</button>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="sideB">Length of side A</label>
-          <input id="sideB" type="number" required>
+        <div class="col-md-3">
+          <h3>Equilateral triangles</h3>
+          <ul class="equilateral text-danger">
+          </ul>
         </div>
-        <div class="form-group">
-          <label for="sideC">Length of side A</label>
-          <input id="sideC" type="number" required>
+        <div class="col-md-3">
+          <h3>Isosceles triangles</h3>
+          <ul class="isosceles text-danger">
+          </ul>
         </div>
-        <button type="submit" class="btn btn-info">Submit</button>
-      </form>
-
-      <div id="result">
-        <h3>The trianlge is <span id="triangle-type" class="text-danger"></span></h3>
+        <div class="col-md-3">
+          <h3>Scalene triangles</h3>
+          <ul class="scalene text-danger">
+          </ul>
+        </div>
       </div>
     </div>
   </body>

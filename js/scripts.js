@@ -1,29 +1,46 @@
-function getTriangle(sideA, sideB, sideC) {
-  // sides cannot be 0 and one side cannot be longer than the other
-  // two combined
-  if (sideA === 0 || sideB === 0 || sideC === 0 ||
-      sideA + sideB < sideC || sideB + sideC < sideA ||
-      sideA + sideC < sideB) {
-    return "not a triangle";
-  } else if (sideA === sideB && sideA === sideC) {
-    return "equilateral";
-  } else if (sideA === sideB || sideA === sideC || sideB === sideC) {
-    return "isosceles";
-  } else {
-    return "scalene";
-  }
-}
-
-
 jQuery(document).ready(function() {
   $("#sideA").focus();
   $("#triangle").submit(function(event) {
-    var sideA = parseInt($("#sideA").val());
-    var sideB = parseInt($("#sideB").val());
-    var sideC = parseInt($("#sideC").val());
-    var result = getTriangle(sideA, sideB, sideC);
-    $("#triangle-type").text(result);
-    $("#result").show();
+    $("#warning").hide();
+    var newSideA = parseInt($("#sideA").val());
+    var newSideB = parseInt($("#sideB").val());
+    var newSideC = parseInt($("#sideC").val());
+    // var result = getTriangle(sideA, sideB, sideC);
+    var newTriangle = {
+      sideA: newSideA,
+      sideB: newSideB,
+      sideC: newSideC,
+
+      printTriangle: function() {
+        return "<li>" + this.sideA + ", " + this.sideB + ", "+ this.sideC + "</li>";
+      },
+
+      getTriangle: function() {
+        // sides cannot be 0 and one side cannot be longer than the other
+        // two combined
+        if (this.sideA === 0 || this.sideB === 0 || this.sideC === 0 ||
+            this.sideA + this.sideB < this.sideC ||
+            this.sideB + this.sideC < this.sideA ||
+            this.sideA + this.sideC < this.sideB) {
+          $("#print-message").text("Not a triangle!");
+          $("#message").show();
+        } else if (this.sideA === this.sideB && this.sideA === this.sideC) {
+          $(".equilateral").append(this.printTriangle());
+          $("#print-message").text("Equilateral!");
+          $("#message").show();
+        } else if (this.sideA === this.sideB || this.sideA === this.sideC || this.sideB ===this.sideC) {
+          $(".isosceles").append(this.printTriangle());
+          $("#print-message").text("Isosceles!");
+          $("#message").show();
+        } else {
+          $(".scalene").append(this.printTriangle());
+          $("#print-message").text("Scalene!");
+          $("#message").show();
+        }
+      }
+    }
+    newTriangle.getTriangle();
+
     event.preventDefault();
   });
 });
